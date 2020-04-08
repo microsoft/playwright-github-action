@@ -1,0 +1,5 @@
+name: 'Playwright'
+description: 'Run Playwright tests on GitHub Actions'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
