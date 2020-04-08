@@ -4,6 +4,7 @@ const os = require('os');
 
 async function run() {
   try {
+    console.log('inside action', os.platform());
     if (os.platform() === 'linux') {
       await exec('sudo', ['apt-get', 'update']);
       // For Chromium
