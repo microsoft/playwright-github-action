@@ -9,7 +9,8 @@ async function run() {
       // For Chromium
       exec('sudo', ['apt-get', 'install', 'libgbm-dev']);
       // For WebKit
-      exec('sudo', ['apt-get', 'install', 'libwoff1', 
+      exec('sudo', ['apt-get', 'install', 'libwoff1',
+                                          'libwoff-dev',
                                           'libopus0',
                                           'libwebp6',
                                           'libwebpdemux2',
