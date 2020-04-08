@@ -4,7 +4,6 @@ const os = require('os');
 
 async function run() {
   try {
-    console.log('inside action', os.platform());
     if (os.platform() === 'linux') {
       await exec('sudo', ['apt-get', 'update']);
       // For Chromium
@@ -24,6 +23,8 @@ async function run() {
                                                 'libevent-2.1-6',
                                                 'libnotify4',
                                                 'libxslt1.1']);
+      // For video playback in Firefox
+      await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
     }
   } 
   catch (error) {
