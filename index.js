@@ -11,7 +11,6 @@ async function run() {
       await exec('sudo', ['apt-get', 'install', 'libgbm-dev']);
       // For WebKit
       await exec('sudo', ['apt-get', 'install', 'libwoff1',
-                                                'libwoff-dev',
                                                 'libopus0',
                                                 'libwebp6',
                                                 'libwebpdemux2',
