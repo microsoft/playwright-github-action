@@ -1,0 +1,17 @@
+name: "ubuntu"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - uses: ./
+    - name: Run Playwright
+      run: cd sample && npm install && node index.js
