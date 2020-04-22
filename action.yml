@@ -1,5 +1,9 @@
-name: 'Playwright'
+name: 'Playwright GitHub Action'
 description: 'Run Playwright tests on GitHub Actions'
+author: 'Microsoft'
+branding:
+  icon: 'play'
+  color: 'green'
 runs:
   using: 'node12'
   main: 'dist/index.js'
