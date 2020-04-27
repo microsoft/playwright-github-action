@@ -25,6 +25,8 @@ async function run() {
                                                 'libxslt1.1']);
       // For video playback in Firefox
       await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
+      // For headful execution
+      await exec('sudo', ['apt-get', 'install', 'xvfb'])
     }
   } 
   catch (error) {
