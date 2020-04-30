@@ -16,7 +16,7 @@ jobs:
     - name: Run Playwright
       run: cd sample && npm install && node index.js
     - name: Check browsers
-      run: dir %USERPROFILE%\AppData\Local\ms-playwright\
+      run: ls %USERPROFILE%\AppData\Local\ms-playwright\
     - name: Cache browsers
       uses: actions/cache@v1
       with:
