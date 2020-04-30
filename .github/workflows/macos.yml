@@ -15,3 +15,10 @@ jobs:
     - uses: ./
     - name: Run Playwright
       run: cd sample && npm install && node index.js
+    - name: Check browsers
+      run: ls ~/Library/Caches/ms-playwright/
+    - name: Cache browsers
+      uses: actions/cache@v1
+      with:
+        path: '~/Library/Caches/ms-playwright/'
+        key: ${{ runner.os }}-browsers

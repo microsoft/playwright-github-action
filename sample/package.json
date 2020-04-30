@@ -1,6 +1,6 @@
 {
   "name": "sample",
   "dependencies": {
-    "playwright": "^0.12.1"
+    "playwright": "0.15.0-next.1588218538469"
   }
 }
