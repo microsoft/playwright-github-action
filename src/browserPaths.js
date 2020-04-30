@@ -9,11 +9,12 @@ export const browserPaths = (() => {
     return path.join(os.homedir(), '.cache', suffix);
   }
   if (os.platform() === 'darwin') {
-    return path.join(os.homedir(), 'Libray', 'Caches', suffix);
+    return path.join(os.homedir(), 'Library', 'Caches', suffix);
   }
   if (os.platform() === 'win32') {
     return path.join(os.homedir(), 'AppData', 'Local', suffix);
   }
   throw new Error('Unsupported platfor:', os.platform());
 })();
+
 export const toolName = 'ms-playwright-browsers';

@@ -36,9 +36,10 @@ async function run() {
   catch (error) {
     core.setFailed(error.message);
   }
+
+  const cachedPaths = tc.findAllVersions(toolName, 'version');
+  console.log('Cached paths:', cachedPaths);
 }
 
 run();
 
-const cachedPath = tc.find(toolName, 'version');
-console.log('Cached path:', cachedPath);

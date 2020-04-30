@@ -3,5 +3,7 @@
 const tc = require('@actions/tool-cache');
 const { browserPaths, toolName } = require('./browserPaths');
 
-const cachedPath = await tc.cacheDir(browserPaths, toolName, 'version');
-console.log('Cached path:', cachedPath);
+(async () => {
+  const cachedPath = await tc.cacheDir(browserPaths, toolName, 'version');
+  console.log('Cached path:', cachedPath);
+})();

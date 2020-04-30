@@ -36,6 +36,8 @@ module.exports =
 /******/ 		// Load entry module and return exports
 /******/ 		return __webpack_require__(623);
 /******/ 	};
+/******/ 	// initialize runtime
+/******/ 	runtime(__webpack_require__);
 /******/
 /******/ 	// run startup
 /******/ 	return startup();
@@ -1246,6 +1248,37 @@ exports.debug = debug; // for test
 /***/ (function(module) {
 
 module.exports = require("https");
+
+/***/ }),
+
+/***/ 314:
+/***/ (function(__unusedmodule, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "browserPaths", function() { return browserPaths; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toolName", function() { return toolName; });
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
+const os = __webpack_require__(87);
+const path = __webpack_require__(622);
+
+const browserPaths = (() => {
+  const suffix = 'ms-playwright';  
+  if (os.platform() === 'linux') {
+    return path.join(os.homedir(), '.cache', suffix);
+  }
+  if (os.platform() === 'darwin') {
+    return path.join(os.homedir(), 'Library', 'Caches', suffix);
+  }
+  if (os.platform() === 'win32') {
+    return path.join(os.homedir(), 'AppData', 'Local', suffix);
+  }
+  throw new Error('Unsupported platfor:', os.platform());
+})();
+
+const toolName = 'ms-playwright-browsers';
+
 
 /***/ }),
 
@@ -4201,10 +4234,13 @@ module.exports = require("path");
 /***/ 623:
 /***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
 
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 const core = __webpack_require__(470);
 const tc = __webpack_require__(533);
 const { exec } = __webpack_require__(986);
 const os = __webpack_require__(87);
+const { toolName } = __webpack_require__(314);
 
 async function run() {
   try {
@@ -4236,9 +4272,13 @@ async function run() {
   catch (error) {
     core.setFailed(error.message);
   }
+
+  const cachedPaths = tc.findAllVersions(toolName, 'version');
+  console.log('Cached paths:', cachedPaths);
 }
 
 run();
+
 
 
 /***/ }),
@@ -5062,4 +5102,31 @@ exports.exec = exec;
 
 /***/ })
 
-/******/ });
+/******/ },
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ 	"use strict";
+/******/ 
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getter */
+/******/ 	!function() {
+/******/ 		// define getter function for harmony exports
+/******/ 		var hasOwnProperty = Object.prototype.hasOwnProperty;
+/******/ 		__webpack_require__.d = function(exports, name, getter) {
+/******/ 			if(!hasOwnProperty.call(exports, name)) {
+/******/ 				Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ }
+);
