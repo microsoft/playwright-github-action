@@ -1,6 +1,10 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 const core = require('@actions/core');
+const tc = require('@actions/tool-cache');
 const { exec } = require('@actions/exec');
 const os = require('os');
+const { toolName } = require('./browserPaths');
 
 async function run() {
   try {
@@ -34,4 +38,7 @@ async function run() {
   }
 }
 
-run()
+run();
+
+const cachedPath = tc.find(toolName, 'version');
+console.log('Cached path:', cachedPath);

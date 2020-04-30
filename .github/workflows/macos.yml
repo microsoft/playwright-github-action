@@ -13,12 +13,12 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - uses: ./
-    - name: Run Playwright
-      run: cd sample && npm install && node index.js
-    - name: Check browsers
-      run: ls ~/Library/Caches/ms-playwright/
     - name: Cache browsers
       uses: actions/cache@v1
       with:
         path: '~/Library/Caches/ms-playwright/'
         key: ${{ runner.os }}-browsers
+    - name: Run Playwright
+      run: cd sample && npm install && node index.js
+    - name: Check browsers
+      run: ls -alh ~/Library/Caches/ms-playwright/
