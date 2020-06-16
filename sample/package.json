@@ -1,6 +1,6 @@
 {
   "name": "sample",
   "dependencies": {
-    "playwright": "^0.12.1"
+    "playwright": "^1.1.0"
   }
 }
