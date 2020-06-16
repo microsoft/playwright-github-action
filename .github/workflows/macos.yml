@@ -13,5 +13,18 @@ jobs:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - uses: ./
+    - name: Install dependencies
+      run: cd sample && npm install
     - name: Run Playwright
-      run: cd sample && npm install && node index.js
+      run: cd sample && node index.js
+
+  test-mac-headful:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - uses: ./
+    - name: Install dependencies
+      run: cd sample && npm install
+    - name: Run Playwright
+      run: cd sample && HEADFUL=true node index.js
