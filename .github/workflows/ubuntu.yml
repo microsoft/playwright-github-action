@@ -27,4 +27,4 @@ jobs:
     - name: Install dependencies
       run: cd sample && npm install
     - name: Run Playwright
-      run: cd sample && HEADFUL=true xvfb-run node index.js
+      run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js

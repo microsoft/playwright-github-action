@@ -20,10 +20,42 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: actions/setup-node@v1
+
       - uses: microsoft/playwright-github-action@v1
+
       - name: Install dependencies and run tests
         run: npm install && npm test
+```
+
+### Upload artifacts
+
+This GitHub Action can be combined with the [Upload Artifact action](https://github.com/actions/upload-artifact) to upload test artifacts (like screenshots or logs).
+
+```yml
+steps:
+- uses: microsoft/playwright-github-action@v1
+
+- name: Install dependencies and run tests
+  run: npm install && npm test
+
+- uses: actions/upload-artifact@v2
+  with:
+    name: test-artifacts
+    path: path/to/artifacts
+```
+
+### Run in headful mode
+
+This GitHub Action can also execute tests in headful mode. To do this, use `xvfb-run` on a Linux agent.
+
+```sh
+# Windows/macOS
+$ npm test
+
+# Linux
+$ xfvb-run --auto-servernum -- npm test
 ```
 
 ## Resources
