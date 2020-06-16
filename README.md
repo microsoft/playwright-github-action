@@ -9,6 +9,11 @@ Set up GitHub Actions to run cross-browser tests on Chromium, WebKit and Firefox
 Add `uses: microsoft/playwright-github-action@v1` to the GitHub workflow definition before running your tests.
 
 ```yml
+on:
+  push:
+    branches:
+    - master
+
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest # or macos-latest, windows-latest
