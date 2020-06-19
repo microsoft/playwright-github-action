@@ -23,12 +23,17 @@ async function run() {
                                                 'libevent-2.1-6',
                                                 'libnotify4',
                                                 'libxslt1.1']);
+      // gstreamer and plugins required for video playback in WebKit.
+      await exec('sudo', ['apt-get', 'install', 'gstreamer1.0-gl',
+                                                'gstreamer1.0-plugins-base',
+                                                'gstreamer1.0-plugins-good',
+                                                'gstreamer1.0-plugins-bad']);
       // For video playback in Firefox
       await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
       // For headful execution
       await exec('sudo', ['apt-get', 'install', 'xvfb'])
     }
-  } 
+  }
   catch (error) {
     core.setFailed(error.message);
   }
