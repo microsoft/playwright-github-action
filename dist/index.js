@@ -1021,7 +1021,7 @@ const DEPENDENCIES = {
       'libdbus-1-3',
       'libxcb-shm0',
       'libpangoft2-1.0-0',
-      'libxt',
+      'libxt6',
     ],
     webkit: [
       'libglib2.0-0',
