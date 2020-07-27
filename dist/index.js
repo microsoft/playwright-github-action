@@ -1184,7 +1184,7 @@ async function run() {
         throw new Error('Cannot install dependencies for this linux distribution!');
       await exec('sudo', ['apt-get', 'install', '--no-install-recommends',
         ...deps.chromium,
-        ...deps.firefofx,
+        ...deps.firefox,
         ...deps.webkit
       ]);
       // For video playback in Firefox
