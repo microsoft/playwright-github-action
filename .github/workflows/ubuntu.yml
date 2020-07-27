@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-linux:
-    name: ${{ matrix.os }} Headless
+    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} Headless
     strategy:
       fail-fast: false
       matrix:
@@ -25,7 +25,7 @@ jobs:
       run: cd sample && node index.js
 
   test-linux-headful:
-    name: ${{ matrix.os }} Headful
+    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} Headful
     strategy:
       fail-fast: false
       matrix:
