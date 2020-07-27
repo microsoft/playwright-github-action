@@ -8,7 +8,12 @@ on:
 
 jobs:
   test-linux:
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }} Headless
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
@@ -19,7 +24,12 @@ jobs:
       run: cd sample && node index.js
 
   test-linux-headful:
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }} Headful
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
