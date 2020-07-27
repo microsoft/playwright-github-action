@@ -29,13 +29,13 @@ jobs:
 
       # Headful is different in every OS
     - name: Run Playwright (headful linux)
-      if: ${{ matrix.headless == false && startsWith('ubuntu', matrix.os) }}
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'ubuntu') }}
       run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js
     - name: Run Playwright (headful windows)
-      if: ${{ matrix.headless == false && startsWith('windows', matrix.os) }}
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'windows') }}
       run: cd sample && HEADFUL=true node index.js
       shell: bash
     - name: Run Playwright (headful mac)
-      if: ${{ matrix.headless == false && startsWith('mac', matrix.os) }}
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'mac') }}
       run: cd sample && HEADFUL=true node index.js
 
