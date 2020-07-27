@@ -17,8 +17,11 @@ jobs:
         headless: [true, false]
         exclude:
           - os: ubuntu-20.04
-            playwright: [1.0.0, 1.1.0, 1.2.0, latest]
-            headless: [true, false]
+            playwright: 1.0.0
+          - os: ubuntu-20.04
+            playwright: 1.1.0
+          - os: ubuntu-20.04
+            playwright: 1.2.0
 
     runs-on: ${{ matrix.os }}
     steps:
