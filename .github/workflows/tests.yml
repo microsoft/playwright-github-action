@@ -15,6 +15,11 @@ jobs:
         os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
         playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
         headless: [true, false]
+        exclude:
+          - os: ubuntu-20.04
+            playwright: [1.0.0, 1.1.0, 1.2.0, latest]
+            headless: [true, false]
+
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
