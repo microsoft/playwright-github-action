@@ -8,35 +8,25 @@ on:
 
 jobs:
   test-linux:
-    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} Headless
+    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} headless=${{ matrix.headless }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
         playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
+        headless: [true, false]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
     - uses: ./
     - name: Install dependencies
       run: cd sample && npm install playwright@${{ matrix.playwright }}
-    - name: Run Playwright
+    - name: Run Playwright (headless)
+      if: ${{ matrix.headless == true }}
       run: cd sample && node index.js
-
-  test-linux-headful:
-    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} Headful
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-    - uses: ./
-    - name: Install dependencies
-      run: cd sample && npm install playwright@${{ matrix.playwright }}
-    - name: Run Playwright
+    - name: Run Playwright (headful)
+      if: ${{ matrix.headless == false }}
       run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js
+      shell: bash
+
