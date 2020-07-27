@@ -85,6 +85,7 @@ const DEPENDENCIES = {
       'libjpeg-turbo8',
       'libpng16-16',
       'libopenjp2-7',
+      'libvpx5',
       'libwebpdemux2',
       'libwebp6',
       'libenchant1c2a',
