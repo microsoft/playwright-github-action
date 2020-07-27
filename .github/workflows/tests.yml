@@ -22,11 +22,20 @@ jobs:
     - uses: ./
     - name: Install dependencies
       run: cd sample && npm install playwright@${{ matrix.playwright }}
+      # Headless running is the same across OSes
     - name: Run Playwright (headless)
       if: ${{ matrix.headless == true }}
       run: cd sample && node index.js
-    - name: Run Playwright (headful)
-      if: ${{ matrix.headless == false }}
+
+      # Headful is different in every OS
+    - name: Run Playwright (headful linux)
+      if: ${{ matrix.headless == false && startsWith('ubuntu', matrix.os) }}
       run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js
+    - name: Run Playwright (headful windows)
+      if: ${{ matrix.headless == false && startsWith('windows', matrix.os) }}
+      run: cd sample && HEADFUL=true node index.js
       shell: bash
+    - name: Run Playwright (headful mac)
+      if: ${{ matrix.headless == false && startsWith('mac', matrix.os) }}
+      run: cd sample && HEADFUL=true node index.js
 
