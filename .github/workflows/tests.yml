@@ -1,0 +1,51 @@
+name: "tests"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  test-linux:
+    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} headless=${{ matrix.headless }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
+        playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
+        headless: [true, false]
+        exclude:
+          - os: ubuntu-20.04
+            playwright: 1.0.0
+          - os: ubuntu-20.04
+            playwright: 1.1.0
+          - os: ubuntu-20.04
+            playwright: 1.2.0
+          - os: ubuntu-20.04
+            playwright: latest
+
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - uses: ./
+    - name: Install dependencies
+      run: cd sample && npm install playwright@${{ matrix.playwright }}
+      # Headless running is the same across OSes
+    - name: Run Playwright (headless)
+      if: ${{ matrix.headless == true }}
+      run: cd sample && node index.js
+
+      # Headful is different in every OS
+    - name: Run Playwright (headful linux)
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'ubuntu') }}
+      run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js
+    - name: Run Playwright (headful windows)
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'windows') }}
+      run: cd sample && HEADFUL=true node index.js
+      shell: bash
+    - name: Run Playwright (headful mac)
+      if: ${{ matrix.headless == false && startsWith(matrix.os, 'mac') }}
+      run: cd sample && HEADFUL=true node index.js
+
