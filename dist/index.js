@@ -960,6 +960,10 @@ module.exports = require("os");
 const core = __webpack_require__(470);
 const { exec } = __webpack_require__(986);
 const os = __webpack_require__(87);
+const util = __webpack_require__(669);
+const fs = __webpack_require__(747);
+
+const readFileAsync = util.promisify(fs.readFile.bind(fs));
 
 const DEPENDENCIES = {
   'ubuntu18.04': {

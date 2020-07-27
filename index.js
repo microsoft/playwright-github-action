@@ -1,6 +1,10 @@
 const core = require('@actions/core');
 const { exec } = require('@actions/exec');
 const os = require('os');
+const util = require('util');
+const fs = require('fs');
+
+const readFileAsync = util.promisify(fs.readFile.bind(fs));
 
 const DEPENDENCIES = {
   'ubuntu18.04': {
