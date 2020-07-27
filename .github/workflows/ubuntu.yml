@@ -13,13 +13,14 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
+        playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - uses: ./
     - name: Install dependencies
-      run: cd sample && npm install
+      run: cd sample && npm install playwright@${{ matrix.playwright }}
     - name: Run Playwright
       run: cd sample && node index.js
 
@@ -29,12 +30,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
+        playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
     - uses: ./
     - name: Install dependencies
-      run: cd sample && npm install
+      run: cd sample && npm install playwright@${{ matrix.playwright }}
     - name: Run Playwright
       run: cd sample && HEADFUL=true xvfb-run --auto-servernum -- node index.js

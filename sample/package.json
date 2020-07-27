@@ -1,6 +1,4 @@
 {
   "name": "sample",
-  "dependencies": {
-    "playwright": "^1.2.1"
-  }
+  "dependencies": {}
 }

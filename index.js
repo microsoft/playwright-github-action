@@ -65,6 +65,8 @@ const DEPENDENCIES = {
       'libxt6',
     ],
     webkit: [
+      // libgles2 is needed for Playwright v1.2.1, but not needed anymore for v1.3.0
+      'libgles2',
       'libglib2.0-0',
       'libgstreamer1.0-0',
       'libcairo2',
