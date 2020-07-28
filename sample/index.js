@@ -7,7 +7,6 @@ async function run(browserType) {
   try {
     const browser = await playwright[browserType].launch({ headless });
     const page = await browser.newPage();
-    await page.goto('http://example.com');
     console.log(browserType, await page.evaluate(() => ({
       width: document.documentElement.clientWidth,
       clientHeight: document.documentElement.clientHeight
