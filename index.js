@@ -233,8 +233,9 @@ async function run() {
         ...deps.firefox,
         ...deps.webkit
       ]);
-      // For video playback in Firefox
-      await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
+      // - `ffmpeg`: For video playback in Firefox
+      // - `gstreamer1.0-plugins-good`: For video playback in WebKit
+      await exec('sudo', ['apt-get', 'install', 'ffmpeg', 'gstreamer1.0-plugins-good']);
       // For headful execution
       await exec('sudo', ['apt-get', 'install', 'xvfb'])
     }
