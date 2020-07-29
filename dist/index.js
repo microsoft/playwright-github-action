@@ -994,7 +994,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrandr2',
-      'libxtst6',
+      'libxtst6'
     ],
     firefox: [
       'libatk1.0-0',
@@ -1022,7 +1022,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrender1',
-      'libxt6',
+      'libxt6'
     ],
     webkit: [
       'libatk-bridge2.0-0',
@@ -1036,7 +1036,7 @@ const DEPENDENCIES = {
       'libfreetype6',
       'libgdk-pixbuf2.0-0',
       'libgl1',
-      'libgles2', // libgles2 is needed for Playwright v1.2.1, but not needed anymore for v1.3.0
+      'libgles2',
       'libglib2.0-0',
       'libgstreamer-gl1.0-0',
       'libgstreamer-plugins-bad1.0-0',
@@ -1066,7 +1066,7 @@ const DEPENDENCIES = {
       'libxdamage1',
       'libxkbcommon0',
       'libxml2',
-      'libxslt1.1',
+      'libxslt1.1'
     ],
   },
 
@@ -1098,7 +1098,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrandr2',
-      'libxtst6',
+      'libxtst6'
     ],
     firefox: [
       'libatk1.0-0',
@@ -1126,7 +1126,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrender1',
-      'libxt6',
+      'libxt6'
     ],
     webkit: [
       'libatk-bridge2.0-0',
@@ -1139,6 +1139,7 @@ const DEPENDENCIES = {
       'libfreetype6',
       'libgdk-pixbuf2.0-0',
       'libgl1',
+      'libgles2',
       'libglib2.0-0',
       'libgstreamer-gl1.0-0',
       'libgstreamer-plugins-bad1.0-0',
@@ -1169,7 +1170,7 @@ const DEPENDENCIES = {
       'libxdamage1',
       'libxkbcommon0',
       'libxml2',
-      'libxslt1.1',
+      'libxslt1.1'
     ],
   },
 };
