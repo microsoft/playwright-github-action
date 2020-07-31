@@ -1193,8 +1193,8 @@ async function run() {
         ...deps.webkit
       ]);
       // - `ffmpeg`: For video playback in Firefox
-      // - `gstreamer1.0-plugins-good`: For video playback in WebKit
-      await exec('sudo', ['apt-get', 'install', 'ffmpeg', 'gstreamer1.0-plugins-good']);
+      // - `gstreamer1.0-plugins-{base,good,bad}`: For video playback in WebKit
+      await exec('sudo', ['apt-get', 'install', 'ffmpeg', 'gstreamer1.0-plugins-good',  'gstreamer1.0-plugins-bad', 'gstreamer1.0-plugins-base']);
       // For headful execution
       await exec('sudo', ['apt-get', 'install', 'xvfb'])
     }
