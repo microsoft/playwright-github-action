@@ -20,8 +20,6 @@ npm run package
 Follow these steps to move the `v1` to a new commit `1e2d565`.
 
 ```
-git tag -d v1
-git push upstream :v1
-git tag v1 1e2d565
-git push upstream v1
+git tag -f v1 1e2d565
+git push -f upstream v1
 ```
