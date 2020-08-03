@@ -251,7 +251,7 @@ async function run() {
 async function getUbuntuVersion() {
   if (os.platform() !== 'linux')
     return '';
-  const osReleaseText = await readFileAsync('/etc/os-release', 'utf8').catch(e => '');
+  const osReleaseText = await readFileAsync('/etc/os-release', 'utf8').catch(() => {});
   if (!osReleaseText)
     return '';
 
