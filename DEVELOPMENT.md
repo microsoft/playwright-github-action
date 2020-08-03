@@ -25,7 +25,7 @@ git push upstream v1.4.4
 
 ### Updating sliding tag
 
-Follow these steps to move the `v1` to the new version `v1.4.4`.
+Follow these steps to move the `v1` to a new version `v1.4.4`.
 
 ```
 git tag -f v1 v1.4.4
