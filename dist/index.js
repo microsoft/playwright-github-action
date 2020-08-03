@@ -1025,6 +1025,10 @@ const DEPENDENCIES = {
       'libxt6'
     ],
     webkit: [
+      'gstreamer1.0-libav',
+      'gstreamer1.0-plugins-bad',
+      'gstreamer1.0-plugins-base',
+      'gstreamer1.0-plugins-good',
       'libatk-bridge2.0-0',
       'libatk1.0-0',
       'libbrotli1',
@@ -1039,8 +1043,6 @@ const DEPENDENCIES = {
       'libgles2',
       'libglib2.0-0',
       'libgstreamer-gl1.0-0',
-      'libgstreamer-plugins-bad1.0-0',
-      'libgstreamer-plugins-base1.0-0',
       'libgstreamer1.0-0',
       'libgtk-3-0',
       'libharfbuzz-icu0',
@@ -1129,6 +1131,10 @@ const DEPENDENCIES = {
       'libxt6'
     ],
     webkit: [
+      'gstreamer1.0-libav',
+      'gstreamer1.0-plugins-bad',
+      'gstreamer1.0-plugins-base',
+      'gstreamer1.0-plugins-good',
       'libatk-bridge2.0-0',
       'libatk1.0-0',
       'libcairo2',
@@ -1142,8 +1148,6 @@ const DEPENDENCIES = {
       'libgles2',
       'libglib2.0-0',
       'libgstreamer-gl1.0-0',
-      'libgstreamer-plugins-bad1.0-0',
-      'libgstreamer-plugins-base1.0-0',
       'libgstreamer1.0-0',
       'libgtk-3-0',
       'libharfbuzz-icu0',
@@ -1193,8 +1197,7 @@ async function run() {
         ...deps.webkit
       ]);
       // - `ffmpeg`: For video playback in Firefox
-      // - `gstreamer1.0-plugins-{base,good,bad}`: For video playback in WebKit
-      await exec('sudo', ['apt-get', 'install', 'ffmpeg', 'gstreamer1.0-plugins-good',  'gstreamer1.0-plugins-bad', 'gstreamer1.0-plugins-base']);
+      await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
       // For headful execution
       await exec('sudo', ['apt-get', 'install', 'xvfb'])
     }
@@ -1207,7 +1210,7 @@ async function run() {
 async function getUbuntuVersion() {
   if (os.platform() !== 'linux')
     return '';
-  const osReleaseText = await readFileAsync('/etc/os-release', 'utf8').catch(e => '');
+  const osReleaseText = await readFileAsync('/etc/os-release', 'utf8').catch(() => {});
   if (!osReleaseText)
     return '';
 
