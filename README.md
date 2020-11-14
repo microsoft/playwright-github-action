@@ -55,7 +55,7 @@ This GitHub Action can also execute tests in headful mode. To do this, use `xvfb
 $ npm test
 
 # Linux
-$ xfvb-run --auto-servernum -- npm test
+$ xvfb-run --auto-servernum -- npm test
 ```
 
 ## Resources
