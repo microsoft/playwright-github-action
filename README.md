@@ -12,7 +12,7 @@ Add `uses: microsoft/playwright-github-action@v1` to the GitHub workflow definit
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   e2e-tests:
