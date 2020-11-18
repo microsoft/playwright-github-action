@@ -41,6 +41,7 @@ steps:
   run: npm install && npm test
 
 - uses: actions/upload-artifact@v2
+  if: ${{ always() }}
   with:
     name: test-artifacts
     path: path/to/artifacts
