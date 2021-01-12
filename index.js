@@ -232,15 +232,15 @@ async function run() {
         deps = DEPENDENCIES['ubuntu20.04'];
       else
         throw new Error('Cannot install dependencies for this linux distribution!');
-      await exec('sudo', ['apt-get', 'install', '--no-install-recommends',
+      await exec('sudo', ['apt-get', 'install', '-y', '--no-install-recommends',
         ...deps.chromium,
         ...deps.firefox,
         ...deps.webkit
       ]);
       // - `ffmpeg`: For video playback in Firefox
-      await exec('sudo', ['apt-get', 'install', 'ffmpeg']);
+      await exec('sudo', ['apt-get', 'install', '-y', 'ffmpeg']);
       // For headful execution
-      await exec('sudo', ['apt-get', 'install', 'xvfb'])
+      await exec('sudo', ['apt-get', 'install', '-y', 'xvfb'])
     }
   }
   catch (error) {
