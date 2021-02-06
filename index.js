@@ -9,6 +9,7 @@ const readFileAsync = util.promisify(fs.readFile.bind(fs));
 const DEPENDENCIES = {
   'ubuntu18.04': {
     chromium: [
+      'fonts-liberation',
       'libasound2',
       'libatk-bridge2.0-0',
       'libatk1.0-0',
@@ -115,6 +116,7 @@ const DEPENDENCIES = {
 
   'ubuntu20.04': {
     chromium: [
+      'fonts-liberation',
       'libasound2',
       'libatk-bridge2.0-0',
       'libatk1.0-0',
