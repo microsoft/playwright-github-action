@@ -2,297 +2,6 @@ module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 7826:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const core = __nccwpck_require__(2552);
-const { exec } = __nccwpck_require__(5843);
-const os = __nccwpck_require__(2087);
-const util = __nccwpck_require__(1669);
-const fs = __nccwpck_require__(5747);
-const path = __nccwpck_require__(5622);
-const cache = __nccwpck_require__(9104);
-const readFileAsync = util.promisify(fs.readFile.bind(fs));
-const DEPENDENCIES = {
-  "ubuntu18.04": {
-    chromium: [
-      "fonts-liberation",
-      "libasound2",
-      "libatk-bridge2.0-0",
-      "libatk1.0-0",
-      "libatspi2.0-0",
-      "libcairo2",
-      "libcups2",
-      "libdbus-1-3",
-      "libdrm2",
-      "libgbm1",
-      "libgdk-pixbuf2.0-0",
-      "libglib2.0-0",
-      "libgtk-3-0",
-      "libnspr4",
-      "libnss3",
-      "libpango-1.0-0",
-      "libpangocairo-1.0-0",
-      "libx11-6",
-      "libx11-xcb1",
-      "libxcb-dri3-0",
-      "libxcb1",
-      "libxcomposite1",
-      "libxdamage1",
-      "libxext6",
-      "libxfixes3",
-      "libxi6",
-      "libxrandr2",
-      "libxtst6",
-    ],
-    firefox: [
-      "libatk1.0-0",
-      "libcairo-gobject2",
-      "libcairo2",
-      "libdbus-1-3",
-      "libdbus-glib-1-2",
-      "libfontconfig1",
-      "libfreetype6",
-      "libgdk-pixbuf2.0-0",
-      "libglib2.0-0",
-      "libgtk-3-0",
-      "libgtk2.0-0",
-      "libpango-1.0-0",
-      "libpangocairo-1.0-0",
-      "libpangoft2-1.0-0",
-      "libx11-6",
-      "libx11-xcb1",
-      "libxcb-shm0",
-      "libxcb1",
-      "libxcomposite1",
-      "libxcursor1",
-      "libxdamage1",
-      "libxext6",
-      "libxfixes3",
-      "libxi6",
-      "libxrender1",
-      "libxt6",
-    ],
-    webkit: [
-      "gstreamer1.0-libav",
-      "gstreamer1.0-plugins-bad",
-      "gstreamer1.0-plugins-base",
-      "gstreamer1.0-plugins-good",
-      "libatk-bridge2.0-0",
-      "libatk1.0-0",
-      "libbrotli1",
-      "libcairo2",
-      "libegl1",
-      "libenchant1c2a",
-      "libepoxy0",
-      "libfontconfig1",
-      "libfreetype6",
-      "libgdk-pixbuf2.0-0",
-      "libgl1",
-      "libgles2",
-      "libglib2.0-0",
-      "libgstreamer-gl1.0-0",
-      "libgstreamer1.0-0",
-      "libgtk-3-0",
-      "libharfbuzz-icu0",
-      "libharfbuzz0b",
-      "libhyphen0",
-      "libicu60",
-      "libjpeg-turbo8",
-      "libnotify4",
-      "libopenjp2-7",
-      "libopus0",
-      "libpango-1.0-0",
-      "libpng16-16",
-      "libsecret-1-0",
-      "libvpx5",
-      "libwayland-client0",
-      "libwayland-egl1",
-      "libwayland-server0",
-      "libwebp6",
-      "libwebpdemux2",
-      "libwoff1",
-      "libx11-6",
-      "libxcomposite1",
-      "libxdamage1",
-      "libxkbcommon0",
-      "libxml2",
-      "libxslt1.1",
-    ],
-  },
-
-  "ubuntu20.04": {
-    chromium: [
-      "fonts-liberation",
-      "libasound2",
-      "libatk-bridge2.0-0",
-      "libatk1.0-0",
-      "libatspi2.0-0",
-      "libcairo2",
-      "libcups2",
-      "libdbus-1-3",
-      "libdrm2",
-      "libgbm1",
-      "libgdk-pixbuf2.0-0",
-      "libglib2.0-0",
-      "libgtk-3-0",
-      "libnspr4",
-      "libnss3",
-      "libpango-1.0-0",
-      "libpangocairo-1.0-0",
-      "libx11-6",
-      "libx11-xcb1",
-      "libxcb-dri3-0",
-      "libxcb1",
-      "libxcomposite1",
-      "libxdamage1",
-      "libxext6",
-      "libxfixes3",
-      "libxi6",
-      "libxrandr2",
-      "libxtst6",
-    ],
-    firefox: [
-      "libatk1.0-0",
-      "libcairo-gobject2",
-      "libcairo2",
-      "libdbus-1-3",
-      "libdbus-glib-1-2",
-      "libfontconfig1",
-      "libfreetype6",
-      "libgdk-pixbuf2.0-0",
-      "libglib2.0-0",
-      "libgtk-3-0",
-      "libgtk2.0-0",
-      "libpango-1.0-0",
-      "libpangocairo-1.0-0",
-      "libpangoft2-1.0-0",
-      "libx11-6",
-      "libx11-xcb1",
-      "libxcb-shm0",
-      "libxcb1",
-      "libxcomposite1",
-      "libxcursor1",
-      "libxdamage1",
-      "libxext6",
-      "libxfixes3",
-      "libxi6",
-      "libxrender1",
-      "libxt6",
-    ],
-    webkit: [
-      "gstreamer1.0-libav",
-      "gstreamer1.0-plugins-bad",
-      "gstreamer1.0-plugins-base",
-      "gstreamer1.0-plugins-good",
-      "libatk-bridge2.0-0",
-      "libatk1.0-0",
-      "libcairo2",
-      "libegl1",
-      "libenchant1c2a",
-      "libepoxy0",
-      "libfontconfig1",
-      "libfreetype6",
-      "libgdk-pixbuf2.0-0",
-      "libgl1",
-      "libgles2",
-      "libglib2.0-0",
-      "libgstreamer-gl1.0-0",
-      "libgstreamer1.0-0",
-      "libgtk-3-0",
-      "libharfbuzz-icu0",
-      "libharfbuzz0b",
-      "libhyphen0",
-      "libicu66",
-      "libjpeg-turbo8",
-      "libnotify4",
-      "libopenjp2-7",
-      "libopus0",
-      "libpango-1.0-0",
-      "libpng16-16",
-      "libsecret-1-0",
-      "libsoup2.4-1",
-      "libvpx6",
-      "libwayland-client0",
-      "libwayland-egl1",
-      "libwayland-server0",
-      "libwebp6",
-      "libwebpdemux2",
-      "libwoff1",
-      "libx11-6",
-      "libxcomposite1",
-      "libxdamage1",
-      "libxkbcommon0",
-      "libxml2",
-      "libxslt1.1",
-    ],
-  },
-};
-
-async function run() {
-  try {
-    if (os.platform() === "linux") {
-      await core.group("update system", async () => {
-        await exec("sudo", ["apt-get", "update"]);
-      });
-      const ubuntuVersion = await getUbuntuVersion();
-      let deps = [];
-      if (ubuntuVersion === "18.04") deps = DEPENDENCIES["ubuntu18.04"];
-      else if (ubuntuVersion === "20.04") deps = DEPENDENCIES["ubuntu20.04"];
-      else throw new Error("Cannot install dependencies for this linux distribution!");
-      await core.group("install browser dependencies", async () => {
-        await exec("sudo", [
-          "apt-get",
-          "install",
-          "-y",
-          "--no-install-recommends",
-          ...deps.chromium,
-          ...deps.firefox,
-          ...deps.webkit,
-        ]);
-      });
-      // - `ffmpeg`: For video playback in Firefox
-      await core.group("install ffmpeg", async () => {
-        await exec("sudo", ["apt-get", "install", "-y", "ffmpeg"]);
-      });
-      // For headful execution
-      await core.group("install xvfb", async () => {
-        await exec("sudo", ["apt-get", "install", "-y", "xvfb"]);
-      });
-    }
-  } catch (error) {
-    core.setFailed(error.message);
-  }
-  let cachePath = "";
-  if (os.platform() === "linux") cachePath = path.join(os.homedir(), ".cache", "ms-playwright");
-  else if (os.platform() === "darwin") cachePath = path.join(os.homedir(), "Library", "Caches", "ms-playwright");
-  else if (os.platform() === "win32") cachePath = path.join(os.homedir(), "AppData", "Local", "ms-playwright");
-  await cache.restoreCache([cachePath], `playwright-${os.version()}-`);
-}
-
-async function getUbuntuVersion() {
-  if (os.platform() !== "linux") return "";
-  const osReleaseText = await readFileAsync("/etc/os-release", "utf8").catch(() => {});
-  if (!osReleaseText) return "";
-
-  const fields = new Map();
-  for (const line of osReleaseText.split("\n")) {
-    const tokens = line.split("=");
-    const name = tokens.shift();
-    let value = tokens.join("=").trim();
-    if (value.startsWith('"') && value.endsWith('"')) value = value.substring(1, value.length - 1);
-    if (!name) continue;
-    fields.set(name.toLowerCase(), value);
-  }
-  if (!fields.get("name") || fields.get("name").toLowerCase() !== "ubuntu") return "";
-  return fields.get("version_id") || "";
-}
-
-run();
-
-
-/***/ }),
-
 /***/ 9104:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -56585,6 +56294,26 @@ module.exports = v4;
 
 /***/ }),
 
+/***/ 6503:
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const os = __nccwpck_require__(2087);
+const path = __nccwpck_require__(5622);
+const cache = __nccwpck_require__(9104);
+
+async function run() {
+  let cachePath = "";
+  if (os.platform() === "linux") cachePath = path.join(os.homedir(), ".cache", "ms-playwright");
+  else if (os.platform() === "darwin") cachePath = path.join(os.homedir(), "Library", "Caches", "ms-playwright");
+  else if (os.platform() === "win32") cachePath = path.join(os.homedir(), "AppData", "Local", "ms-playwright");
+  await cache.saveCache([cachePath], `playwright-${os.version()}-${new Date().getTime()}`);
+}
+
+run();
+
+
+/***/ }),
+
 /***/ 2896:
 /***/ ((module) => {
 
@@ -56839,6 +56568,6 @@ module.exports = require("zlib");;
 /******/ 	// module exports must be returned from runtime so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	return __nccwpck_require__(7826);
+/******/ 	return __nccwpck_require__(6503);
 /******/ })()
 ;
