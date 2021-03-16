@@ -62,5 +62,5 @@ $ xvfb-run --auto-servernum -- npm test
 ## Resources
 
 * [Get started with Playwright](https://github.com/microsoft/playwright)
-* [Playwright API reference](https://github.com/microsoft/playwright/blob/master/docs/api.md)
+* [Playwright API reference](https://playwright.dev/docs/api/class-playwright/)
 * [Development docs](DEVELOPMENT.md)
