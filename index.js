@@ -273,13 +273,13 @@ async function getUbuntuVersion() {
 }
 
 function getDependencies(osVersion, browsers) {
-  const deps = [];
+  let deps = [];
   browsers.forEach((browser) => {
     switch (browser) {
       case 'chromium':
       case 'firefox':
       case 'webkit':
-        deps.concat(DEPENDENCIES[osVersion][browser]);
+        deps = deps.concat(DEPENDENCIES[osVersion][browser]);
         break;
       default:
         throw new Error('Unrecognised browser ' + browser);
