@@ -4,6 +4,15 @@ author: 'Microsoft'
 branding:
   icon: 'play'
   color: 'green'
+inputs:
+  browsers:
+    description: 'Comma-separated list of the browsers you intend to launch'
+    required: false
+    default: 'chromium, firefox, webkit'
+  headless:
+    description: 'Specify whether browsers will run in headless mode'
+    required: false
+    default: 'true'
 runs:
   using: 'node12'
   main: 'dist/index.js'

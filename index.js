@@ -5,6 +5,7 @@ const util = require('util');
 const fs = require('fs');
 
 const readFileAsync = util.promisify(fs.readFile.bind(fs));
+const getInputList = (name) => core.getInput(name).split(',').map((x) => x.trim());
 
 const DEPENDENCIES = {
   'ubuntu18.04': {
@@ -227,22 +228,20 @@ async function run() {
     if (os.platform() === 'linux') {
       await exec('sudo', ['apt-get', 'update']);
       const ubuntuVersion = await getUbuntuVersion();
+      const browsers = getInputList('browsers');
       let deps = [];
       if (ubuntuVersion === '18.04')
-        deps = DEPENDENCIES['ubuntu18.04'];
+        deps = getDependencies('ubuntu18.04', browsers);
       else if (ubuntuVersion === '20.04')
-        deps = DEPENDENCIES['ubuntu20.04'];
+        deps = getDependencies('ubuntu20.04', browsers);
       else
         throw new Error('Cannot install dependencies for this linux distribution!');
-      await exec('sudo', ['apt-get', 'install', '-y', '--no-install-recommends',
-        ...deps.chromium,
-        ...deps.firefox,
-        ...deps.webkit
-      ]);
-      // - `ffmpeg`: For video playback in Firefox
-      await exec('sudo', ['apt-get', 'install', '-y', 'ffmpeg']);
-      // For headful execution
-      await exec('sudo', ['apt-get', 'install', '-y', 'xvfb'])
+      await exec('sudo', ['apt-get', 'install', '-y', '--no-install-recommends', ...deps]);
+      if (browsers.includes('firefox'))
+        // - `ffmpeg`: For video playback in Firefox
+        await exec('sudo', ['apt-get', 'install', '-y', 'ffmpeg']);
+      if (core.getInput('headless') !== 'true')
+        await exec('sudo', ['apt-get', 'install', '-y', 'xvfb'])
     }
   }
   catch (error) {
@@ -271,6 +270,22 @@ async function getUbuntuVersion() {
   if (!fields.get('name') || fields.get('name').toLowerCase() !== 'ubuntu')
     return '';
   return fields.get('version_id') || '';
+}
+
+function getDependencies(osVersion, browsers) {
+  const deps = [];
+  browsers.forEach((browser) => {
+    switch (browser) {
+      case 'chromium':
+      case 'firefox':
+      case 'webkit':
+        deps.concat(DEPENDENCIES[osVersion][browser]);
+        break;
+      default:
+        throw new Error('Unrecognised browser ' + browser);
+    }
+  });
+  return deps;
 }
 
 run()

@@ -31,7 +31,7 @@ jobs:
 
 ### Upload artifacts
 
-This GitHub Action can be combined with the [Upload Artifact action](https://github.com/actions/upload-artifact) to upload test artifacts (like screenshots or logs).
+This GitHub action can be combined with the [Upload Artifact action](https://github.com/actions/upload-artifact) to upload test artifacts (like screenshots or logs).
 
 ```yml
 steps:
@@ -49,7 +49,16 @@ steps:
 
 ### Run in headful mode
 
-This GitHub Action can also execute tests in headful mode. To do this, use `xvfb-run` on a Linux agent.
+This GitHub action can also execute tests in headful mode. To do this, set the optional `headless` input to `false`.
+
+```yml
+steps:
+  - uses: microsoft/playwright-github-action@v1
+    with:
+      headless: false
+```
+
+Then use `xvfb-run` on a Linux agent.
 
 ```sh
 # Windows/macOS
@@ -59,8 +68,20 @@ $ npm test
 $ xvfb-run --auto-servernum -- npm test
 ```
 
+### Select browsers
+
+By default system dependencies for all browsers are installed, however, you can limit this to specific browsers only. Set the optional `browsers` input to a comma-separated list of the browsers you intend to launch.
+
+```yml
+steps:
+  - uses: microsoft/playwright-github-action@v1
+    with:
+      browsers: chromium, firefox, webkit
+```
+
 ## Resources
 
 * [Get started with Playwright](https://github.com/microsoft/playwright)
 * [Playwright API reference](https://playwright.dev/docs/api/class-playwright/)
+* [Playwright single browser binary install](https://playwright.dev/docs/installation/#download-single-browser-binary)
 * [Development docs](DEVELOPMENT.md)
