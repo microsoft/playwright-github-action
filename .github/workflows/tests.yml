@@ -30,6 +30,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
     - uses: ./
+      with:
+        headless: ${{ matrix.headless }}
     - name: Install dependencies
       run: cd sample && npm install playwright@${{ matrix.playwright }}
       # Headless running is the same across OSes
