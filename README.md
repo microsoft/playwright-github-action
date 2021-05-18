@@ -4,6 +4,18 @@
 
 Set up GitHub Actions to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
+#### ⚠️ **Important Announcement** ⚠️
+
+Since v1.8.0 Playwright [includes CLI](https://playwright.dev/docs/next/cli#install-system-dependencies) that installs all required browser dependencies. To install dependencies with CLI:
+
+```sh
+$ npx playwright install-deps # install dependencies for all browsers
+$ npx playwright install-deps chromium # install dependencies for Chromium only
+```
+
+**We recommend using Playwright CLI instead of this action**. If something doesn't work, please [let us know](https://github.com/microsoft/playwright/issues/new)! 
+
+
 ## Usage
 
 Add `uses: microsoft/playwright-github-action@v1` to the GitHub workflow definition before running your tests.
