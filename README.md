@@ -4,7 +4,7 @@
 
 Set up GitHub Actions to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
-#### ⚠️ **You probably don't need github-playwright-action** ⚠️
+## ⚠️ **You don't need this GitHub Action** ⚠️
 
 **We recommend using Playwright CLI instead of this action**. 
 
