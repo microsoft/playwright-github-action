@@ -5,15 +5,16 @@ on:
     branches:
       - master
       - 'releases/*'
+  workflow_dispatch:
 
 jobs:
   test-linux:
-    name: ${{ matrix.os }} Playwright@${{ matrix.playwright}} headless=${{ matrix.headless }}
+    name: Playwright@${{ matrix.playwright}} ${{ matrix.os }} headless=${{ matrix.headless }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
-        playwright: [1.0.0, 1.1.0, 1.2.0, next, latest]
+        playwright: [1.0.0, 1.1.0, 1.2.0, 1.12.0, next]
         headless: [true, false]
         exclude:
           - os: ubuntu-20.04
