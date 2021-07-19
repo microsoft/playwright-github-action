@@ -8,6 +8,20 @@ const readFileAsync = util.promisify(fs.readFile.bind(fs));
 
 const DEPENDENCIES = {
   'ubuntu18.04': {
+    tools: [
+      'xvfb',
+      'fonts-noto-color-emoji',
+      'ttf-unifont',
+      'libfontconfig',
+      'libfreetype6',
+      'xfonts-cyrillic',
+      'xfonts-scalable',
+      'fonts-liberation',
+      'fonts-ipafont-gothic',
+      'fonts-wqy-zenhei',
+      'fonts-tlwg-loma-otf',
+      'ttf-ubuntu-font-family',
+    ],
     chromium: [
       'fonts-liberation',
       'libasound2',
@@ -18,6 +32,7 @@ const DEPENDENCIES = {
       'libcups2',
       'libdbus-1-3',
       'libdrm2',
+      'libegl1',
       'libgbm1',
       'libgdk-pixbuf2.0-0',
       'libglib2.0-0',
@@ -36,9 +51,11 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrandr2',
-      'libxtst6'
+      'libxshmfence1',
+      'libxtst6',
     ],
     firefox: [
+      'ffmpeg',
       'libatk1.0-0',
       'libcairo-gobject2',
       'libcairo2',
@@ -64,7 +81,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrender1',
-      'libxt6'
+      'libxt6',
     ],
     webkit: [
       'gstreamer1.0-libav',
@@ -78,6 +95,7 @@ const DEPENDENCIES = {
       'libegl1',
       'libenchant1c2a',
       'libepoxy0',
+      'libevdev2',
       'libfontconfig1',
       'libfreetype6',
       'libgdk-pixbuf2.0-0',
@@ -110,11 +128,25 @@ const DEPENDENCIES = {
       'libxdamage1',
       'libxkbcommon0',
       'libxml2',
-      'libxslt1.1'
+      'libxslt1.1',
     ],
   },
 
   'ubuntu20.04': {
+    tools: [
+      'xvfb',
+      'fonts-noto-color-emoji',
+      'ttf-unifont',
+      'libfontconfig',
+      'libfreetype6',
+      'xfonts-cyrillic',
+      'xfonts-scalable',
+      'fonts-liberation',
+      'fonts-ipafont-gothic',
+      'fonts-wqy-zenhei',
+      'fonts-tlwg-loma-otf',
+      'ttf-ubuntu-font-family',
+    ],
     chromium: [
       'fonts-liberation',
       'libasound2',
@@ -125,6 +157,7 @@ const DEPENDENCIES = {
       'libcups2',
       'libdbus-1-3',
       'libdrm2',
+      'libegl1',
       'libgbm1',
       'libgdk-pixbuf2.0-0',
       'libglib2.0-0',
@@ -143,7 +176,8 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrandr2',
-      'libxtst6'
+      'libxshmfence1',
+      'libxtst6',
     ],
     firefox: [
       'libatk1.0-0',
@@ -171,7 +205,7 @@ const DEPENDENCIES = {
       'libxfixes3',
       'libxi6',
       'libxrender1',
-      'libxt6'
+      'libxt6',
     ],
     webkit: [
       'gstreamer1.0-libav',
@@ -184,6 +218,7 @@ const DEPENDENCIES = {
       'libegl1',
       'libenchant1c2a',
       'libepoxy0',
+      'libevdev2',
       'libfontconfig1',
       'libfreetype6',
       'libgdk-pixbuf2.0-0',
@@ -217,7 +252,7 @@ const DEPENDENCIES = {
       'libxdamage1',
       'libxkbcommon0',
       'libxml2',
-      'libxslt1.1'
+      'libxslt1.1',
     ],
   },
 };
@@ -237,12 +272,9 @@ async function run() {
       await exec('sudo', ['apt-get', 'install', '-y', '--no-install-recommends',
         ...deps.chromium,
         ...deps.firefox,
-        ...deps.webkit
+        ...deps.webkit,
+        ...deps.tools,
       ]);
-      // - `ffmpeg`: For video playback in Firefox
-      await exec('sudo', ['apt-get', 'install', '-y', 'ffmpeg']);
-      // For headful execution
-      await exec('sudo', ['apt-get', 'install', '-y', 'xvfb'])
     }
   }
   catch (error) {
