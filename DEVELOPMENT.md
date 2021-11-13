@@ -14,8 +14,8 @@ npm run package
 
 1. Create a semver tag pointing to the commit you want to release. E.g. to create `v1.4.4` from tip-of-tree:
 ```
-git checkout master
-git pull upstream master
+git checkout main
+git pull upstream main
 git tag v1.4.4
 git push upstream v1.4.4
 ```
