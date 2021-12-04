@@ -285,24 +285,11 @@ async function run() {
 async function getUbuntuVersion() {
   if (os.platform() !== 'linux')
     return '';
-  const osReleaseText = await readFileAsync('/etc/os-release', 'utf8').catch(() => {});
-  if (!osReleaseText)
+  try {
+    return await exec('lsb_release --release --short');
+  } catch (e) {
     return '';
-
-  const fields = new Map();
-  for (const line of osReleaseText.split('\n')) {
-    const tokens = line.split('=');
-    const name = tokens.shift();
-    let value = tokens.join('=').trim();
-    if (value.startsWith('"') && value.endsWith('"'))
-      value = value.substring(1, value.length - 1);
-    if (!name)
-      continue;
-    fields.set(name.toLowerCase(), value);
   }
-  if (!fields.get('name') || fields.get('name').toLowerCase() !== 'ubuntu')
-    return '';
-  return fields.get('version_id') || '';
 }
 
 run()
