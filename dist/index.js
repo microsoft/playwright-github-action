@@ -1385,6 +1385,7 @@ const DEPENDENCIES = {
       'libxkbcommon0',
       'libxml2',
       'libxslt1.1',
+      'libopengl0',
     ],
   },
 };
