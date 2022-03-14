@@ -206,6 +206,7 @@ const DEPENDENCIES = {
       'libxi6',
       'libxrender1',
       'libxt6',
+      'libxtst6',
     ],
     webkit: [
       'gstreamer1.0-libav',
