@@ -27,6 +27,9 @@ jobs:
             playwright: 1.2.0
           - os: ubuntu-20.04
             playwright: latest
+        include:
+          - os: ubuntu-22.04
+            playwright: next
 
     runs-on: ${{ matrix.os }}
     steps:
