@@ -15,8 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04, macos-10.15, windows-2019]
-        playwright: [1.0.0, 1.8.0, 1.12.0, 1.18.0, next, beta]
+        os: [ubuntu-20.04, macos-latest, windows-latest]
+        playwright: [1.8.0, 1.12.0, 1.18.0, next, beta]
         headless: [true, false]
         exclude:
           - os: ubuntu-20.04
@@ -25,6 +25,10 @@ jobs:
             playwright: 1.1.0
           - os: ubuntu-20.04
             playwright: 1.2.0
+          - os: ubuntu-22.04
+            playwright: 1.23
+          - os: ubuntu-22.04
+            playwright: 1.25
           - os: ubuntu-20.04
             playwright: latest
         include:

@@ -1386,6 +1386,7 @@ const DEPENDENCIES = {
       'libxml2',
       'libxslt1.1',
       'libopengl0',
+      'libatomic1',
     ],
   },
 
@@ -1488,7 +1489,6 @@ const DEPENDENCIES = {
       'libharfbuzz-icu0',
       'libharfbuzz0b',
       'libhyphen0',
-      'libjavascriptcoregtk-4.0-18',
       'libjpeg-turbo8',
       'liblcms2-2',
       'libmanette-0.2-0',
@@ -1513,6 +1513,7 @@ const DEPENDENCIES = {
       'libxml2',
       'libxslt1.1',
       'libx264-163',
+      'libatomic1',
     ],
   }
 };
