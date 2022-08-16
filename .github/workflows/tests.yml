@@ -29,6 +29,8 @@ jobs:
             playwright: 1.23
           - os: ubuntu-22.04
             playwright: 1.25
+          - os: ubuntu-22.04
+            playwright: next
           - os: ubuntu-20.04
             playwright: latest
         include:
