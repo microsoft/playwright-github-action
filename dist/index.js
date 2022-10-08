@@ -1260,6 +1260,7 @@ const DEPENDENCIES = {
       'libxkbcommon0',
       'libxml2',
       'libxslt1.1',
+      'libevent-2.1-6',
     ],
   },
 
@@ -1388,6 +1389,7 @@ const DEPENDENCIES = {
       'libxslt1.1',
       'libopengl0',
       'libatomic1',
+      'libevent-2.1-7',
     ],
   },
 
@@ -1515,6 +1517,7 @@ const DEPENDENCIES = {
       'libxslt1.1',
       'libx264-163',
       'libatomic1',
+      'libevent-2.1-7',
     ],
   }
 };
