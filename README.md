@@ -1,6 +1,6 @@
 # Playwright GitHub Action
 
- ![ubuntu](https://github.com/microsoft/playwright-github-action/workflows/ubuntu/badge.svg) ![windows](https://github.com/microsoft/playwright-github-action/workflows/windows/badge.svg) ![macos](https://github.com/microsoft/playwright-github-action/workflows/macos/badge.svg)
+![ubuntu](https://github.com/microsoft/playwright-github-action/workflows/ubuntu/badge.svg) ![windows](https://github.com/microsoft/playwright-github-action/workflows/windows/badge.svg) ![macos](https://github.com/microsoft/playwright-github-action/workflows/macos/badge.svg)
 
 Set up GitHub Actions to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
@@ -20,8 +20,8 @@ Starting with Playwright v1.8.0 it [includes a CLI](https://playwright.dev/docs/
 ### To install dependencies with a CLI:
 
 ```sh
-$ npx playwright install-deps # install dependencies for all browsers
-$ npx playwright install-deps chromium # install dependencies for Chromium only
+npx playwright install-deps # install dependencies for all browsers
+npx playwright install-deps chromium # install dependencies for Chromium only
 ```
 
 ### Playwright CLI with GitHub Actions CI
@@ -39,12 +39,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - name: install dependencies
+      - name: Install dependencies
         run: npm ci
-      - name: install playwright browsers
+      - name: Install playwright browsers
         run: npx playwright install --with-deps
-      - name: npm run test:e2e
-        run: npm run test:e2e
+      - name: Run tests
+        run: npx playwright test
 ```
 
 If something doesn't work, please [let us know](https://github.com/microsoft/playwright/issues/new)! 
@@ -102,10 +102,10 @@ This GitHub Action can also execute tests in headful mode. To do this, use `xvfb
 
 ```sh
 # Windows/macOS
-$ npm test
+npm test
 
 # Linux
-$ xvfb-run --auto-servernum -- npm test
+xvfb-run --auto-servernum -- npm test
 ```
 
 </details>
