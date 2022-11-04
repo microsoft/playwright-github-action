@@ -1,6 +1,6 @@
 # Playwright GitHub Action
 
-![ubuntu](https://github.com/microsoft/playwright-github-action/workflows/ubuntu/badge.svg) ![windows](https://github.com/microsoft/playwright-github-action/workflows/windows/badge.svg) ![macos](https://github.com/microsoft/playwright-github-action/workflows/macos/badge.svg)
+[![tests](https://github.com/microsoft/playwright-github-action/actions/workflows/tests.yml/badge.svg)](https://github.com/microsoft/playwright-github-action/actions/workflows/tests.yml)
 
 Set up GitHub Actions to run cross-browser tests on Chromium, WebKit and Firefox with [Playwright](https://github.com/microsoft/playwright).
 
