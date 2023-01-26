@@ -33,6 +33,12 @@ jobs:
             playwright: next
           - os: ubuntu-20.04
             playwright: latest
+          - os: macos-latest
+            playwright: 1.8.0
+          - os: macos-latest
+            playwright: 1.12.0
+          - os: macos-latest
+            playwright: 1.18.0
         include:
           - os: ubuntu-22.04
             playwright: next
