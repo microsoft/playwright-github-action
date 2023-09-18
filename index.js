@@ -331,6 +331,7 @@ const DEPENDENCIES = {
       'libxtst6'
     ],
     webkit: [
+      'libsoup-3.0-0',
       'libenchant-2-2',
       'gstreamer1.0-libav',
       'gstreamer1.0-plugins-bad',
