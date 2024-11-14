@@ -4498,6 +4498,7 @@ const DEPENDENCIES = {
       'libx264-163',
       'libatomic1',
       'libevent-2.1-7',
+      'libavif13',
     ],
   }
 };
