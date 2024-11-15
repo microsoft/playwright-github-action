@@ -15,13 +15,13 @@ We highly discourage the use of the GitHub Action. See next section for using th
 
 ## ✅ Use the Playwright CLI
 
-Starting with Playwright v1.8.0 it [includes a CLI](https://playwright.dev/docs/next/cli#install-system-dependencies) that installs all required browser dependencies.
+Starting with Playwright v1.8.0 it [includes a CLI](https://playwright.dev/docs/cli#install-system-dependencies) that installs all required browser dependencies.
 
 ### To install dependencies with a CLI:
 
 ```sh
-npx playwright install-deps # install dependencies for all browsers
-npx playwright install-deps chromium # install dependencies for Chromium only
+npx playwright install --with-deps # install browsers + dependencies for all browsers
+npx playwright install chromium --with-deps # install browsers + dependencies for Chromium only
 ```
 
 ### Playwright CLI with GitHub Actions CI

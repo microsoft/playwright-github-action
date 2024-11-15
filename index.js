@@ -394,6 +394,7 @@ const DEPENDENCIES = {
 };
 
 async function run() {
+  core.warning('This GitHub Action is deprecated. We recommend installing dependencies via \'npx playwright install --with-deps\' instead. See https://playwright.dev/docs/cli#install-system-dependencies for more information.');
   try {
     if (os.platform() === 'linux') {
       await exec('sudo', ['apt-get', 'update']);
